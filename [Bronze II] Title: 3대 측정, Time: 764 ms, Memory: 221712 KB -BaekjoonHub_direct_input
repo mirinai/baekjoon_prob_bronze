@@ -1,0 +1,39 @@
+def list_of_std(K,L,evTeam):
+    #기준 넘은 팀 세기 리스트
+    count=0
+    #기준 넘은 팀들의 값들을 넣을 리스트
+    std_team=[]
+
+    for team in evTeam:
+        t = True
+        if sum(team)<K:
+            t = False
+
+        else:
+            for j in team:
+                if j<L:
+                    t=False
+                    break
+        if t==True:
+            count+=1
+            std_team.extend(team)
+
+    print(count)
+    print(*std_team)
+
+
+
+#N : 팀들, K : 한팀의 모든 점수 기준, L : 한명의 점수 기준
+N,K,L=map(int,input().split(" "))
+
+#모든 팀의 리스트
+evTeam=[]
+
+for i in range(0,N):
+    #한팀씩 넣음
+    score = list(map(int, input().split(" ")))
+    evTeam.append(score)
+#print(evTeam)
+
+
+list_of_std(K,L,evTeam)
